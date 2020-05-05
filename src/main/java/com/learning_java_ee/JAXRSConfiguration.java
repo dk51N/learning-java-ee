@@ -1,4 +1,4 @@
-package com.sebastian_daschner.learning_java_ee;
+package com.learning_java_ee;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

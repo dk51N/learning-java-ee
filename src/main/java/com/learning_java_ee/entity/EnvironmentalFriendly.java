@@ -1,4 +1,4 @@
-package com.sebastian_daschner.learning_java_ee.entity;
+package com.learning_java_ee.entity;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

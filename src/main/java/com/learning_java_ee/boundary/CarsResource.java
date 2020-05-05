@@ -1,8 +1,9 @@
-package com.sebastian_daschner.learning_java_ee.boundary;
+package com.learning_java_ee.boundary;
 
-import com.sebastian_daschner.learning_java_ee.entity.Car;
-import com.sebastian_daschner.learning_java_ee.entity.EngineType;
-import com.sebastian_daschner.learning_java_ee.entity.Specification;
+import com.learning_java_ee.control.CarStorageException;
+import com.learning_java_ee.entity.Car;
+import com.learning_java_ee.entity.EngineType;
+import com.learning_java_ee.entity.Specification;
 
 import javax.inject.Inject;
 import javax.json.Json;
@@ -28,7 +29,7 @@ public class CarsResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonArray retrieveCars(@NotNull @QueryParam("filter")EngineType engineType) {
+    public JsonArray retrieveCars(@NotNull @QueryParam("filter") EngineType engineType) {
         return carManufacturer.retrieveCars()
                 .stream()
                 .map(car -> Json.createObjectBuilder()
@@ -42,9 +43,7 @@ public class CarsResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createCar(@Valid @NotNull Specification specification) {
-        System.out.println("in createCar");
-        System.out.println(specification.toString());
+    public Response createCar(@Valid @NotNull Specification specification) throws CarStorageException {
         Car car = carManufacturer.manufactureCar(specification);
 
         URI uri = uriInfo.getBaseUriBuilder()
@@ -55,10 +54,9 @@ public class CarsResource {
         return Response.created(uri).build();
     }
 
-    @GET
-    @Path("{id}")
-    public Car retrieveCar(@PathParam("id") String identifier) {
-        System.out.println("in get car");
-        return carManufacturer.retrieveCar(identifier);
-    }
+//    @GET
+//    @Path("{id}")
+//    public Car retrieveCar(@PathParam("id") String identifier) {
+//        return carManufacturer.retrieveCar(identifier);
+//    }
 }

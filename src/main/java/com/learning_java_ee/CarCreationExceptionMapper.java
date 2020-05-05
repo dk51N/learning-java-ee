@@ -1,6 +1,6 @@
-package com.sebastian_daschner.learning_java_ee;
+package com.learning_java_ee;
 
-import com.sebastian_daschner.learning_java_ee.control.CarCreationException;
+import com.learning_java_ee.control.CarCreationException;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -11,7 +11,7 @@ public class CarCreationExceptionMapper implements ExceptionMapper<CarCreationEx
 
     @Override
     public Response toResponse(CarCreationException exception) {
-        return Response.serverError()
+        return Response.status(Response.Status.BAD_REQUEST)
                 .header("X-Car-Error", exception.getMessage())
                 .entity(exception.getMessage())
                 .build();

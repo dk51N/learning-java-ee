@@ -1,4 +1,4 @@
-package com.sebastian_daschner.learning_java_ee;
+package com.learning_java_ee;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.Response;
