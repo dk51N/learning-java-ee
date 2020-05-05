@@ -1,7 +1,12 @@
 package com.sebastian_daschner.learning_java_ee.entity;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
 import javax.validation.constraints.NotNull;
 
+@Data
+@RequiredArgsConstructor
 public class Specification {
 
     @NotNull
@@ -10,28 +15,4 @@ public class Specification {
     @NotNull
     @EnvironmentalFriendly
     private EngineType engineType;
-
-    public Specification() {
-    }
-
-    public Specification(@NotNull Color color, @NotNull EngineType engineType) {
-        this.color = color;
-        this.engineType = engineType;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public EngineType getEngineType() {
-        return engineType;
-    }
-
-    @Override
-    public String toString() {
-        return "Specification{" +
-                "color=" + color +
-                ", engineType=" + engineType +
-                '}';
-    }
 }
